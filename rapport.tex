@@ -1,0 +1,242 @@
+\documentclass[a4paper,11pt]{report}
+
+\usepackage[french]{babel}              %%% langue française
+\usepackage[utf8]{inputenc}             %%% encodage utf8
+\usepackage{amsmath,amsfonts,amssymb}   %%% pour les maths
+\usepackage{fourier}                    %%% police fourier
+\usepackage{graphicx}                   %%% pour inclure des images
+\usepackage[dvipsnames]{xcolor}         %%% les couleurs
+\usepackage[T1]{fontenc}                %%% pour les mots accentués
+\usepackage{subcaption}                 %%% pour les sous-figures
+\usepackage[french]{minitoc}            %%% sommaire au début de chaque chapitre
+\usepackage{hyperref}                   %%% Options pour la tables des matières
+\usepackage[top=1.5cm,bottom=1.5cm,left=1.5cm,right=1.5cm]{geometry}   %%% paquet pour formater la page => géométrie
+
+%\usepackage[Lenny]{fncychap}          %%% Ensemble de thème pour les chapitres   (Lenny, Sonny, Glenn, Conny, Rejne, Bjarne, Bjornstrup )
+
+\usepackage[titletoc]{appendix}         %%% Pour les annexes
+\usepackage{epstopdf}                   %%% Pour convertir eps vers pdf
+%\usepackage[explicit]{titlesec}
+\usepackage{empheq}                     %%% Pour mettre une boite autour des équations
+\usepackage{minted}                     %%% Pour insérer du code source
+
+\definecolor{titi}{rgb}{0,0.3,0}        %%% pour definir ses propres couleurs
+\definecolor{toto}{RGB}{0,0,185}
+
+
+%%% Modification de la table des matières couleurs cliquable 
+\hypersetup{
+colorlinks,
+linkcolor=toto,    %%% Couleur des liens internes
+urlcolor=toto,     %%% Couleur des hyperliens
+citecolor=titi,    %%% Couleur des références de la bibblio
+breaklinks=true,   %%% Permet le retour à la ligne pour les liens trop longs
+backref=true,      %%% Permet d'ajouter des liens 
+pagebackref=true,  %%% dans les bibliographies
+hyperindex=true,   %%% Ajoute des liens dans les index.
+bookmarks=true
+}
+
+\setcounter{tocdepth}{3}   %%% Modifie la profondeur de la table des matières
+\begin{document}
+
+\renewcommand{\contentsname}{Sommaire}            % Permet de renommer la table des matières 
+\renewcommand{\listfigurename}{Liste des figures} % Permet de renommer la liste des figures
+\renewcommand{\listtablename}{Liste des tableaux} % Permet de renommer la liste des tableaux
+
+\begin{titlepage}   %%% Début de la page de garde
+
+
+\begin{figure}[h]
+\begin{minipage}{0.20\textwidth}
+\centering
+\includegraphics[width=\linewidth]{logos/ensg.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.20\textwidth}
+\centering
+\includegraphics[width=\linewidth]{logos/lareg.png}
+\end{minipage}
+\end{figure}
+\noindent
+\begin{minipage}{0.25\textwidth}
+\begin{flushleft}
+\textsc{École nationales des \\
+Sciences géopgraphiques}
+\end{flushleft}
+\end{minipage}
+\hfill
+\begin{minipage}{0.25\textwidth}
+\begin{flushright}
+\textsc{Laboratoire de Recherche en Géodésie}
+\end{flushright}
+\end{minipage}
+\vspace{3.0cm}
+\begin{center}
+\textsc{\Large Rapport de Stage, projet ... }
+\end{center}
+\begin{center}
+\rule{\textwidth}{0.6mm}\\[0.4cm]
+{\LARGE \bfseries{Intitulé du stage, projet ...}}\\[0.4cm]
+\rule{\textwidth}{0.6mm}\\[1cm]
+
+\includegraphics[width=0.45\linewidth]{images/Debspatiaux.png}\\[1.5cm]
+\end{center}
+
+\begin{minipage}{0.25\textwidth}
+\begin{flushleft}
+Thomas Sandri \\
+PPMD
+\end{flushleft}
+\end{minipage}
+\hfill
+\begin{minipage}{0.25\textwidth}
+\begin{flushright}
+Commanditaires \\
+Abdel Kader
+\end{flushright}
+\end{minipage}\\[0.7cm]
+\begin{center}
+Janvier 2025
+\end{center}
+\end{titlepage}   %% Fin page de garde
+
+\dominitoc
+
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+\chapter*{Introduction}
+
+Le freinage atmosphérique est le principal phénomène physique responsable
+de la rentrée des débris spatiaux dans l'atmosphère
+
+\chapter{Frottement atmosphérique}
+
+\minitoc
+
+\section{Définition}
+
+La force de freinage atmosphérique est définie par l'équation \ref{eq:freinage} :
+
+\begin{equation}
+\overrightarrow{f}_{atm} = -\frac{1}{2} \, \frac{m \, \rho}{S} \, \frac{\overrightarrow{v}. \overrightarrow{v}}{||\overrightarrow{v}||} \, \overrightarrow{v}
+\label{eq:freinage}
+\end{equation}
+
+Cette équation nous vient de \cite{king} mais aussi de \cite{deleflie}. Pour plus de détails sur cette formule voir l'annexe \ref{Annex:Un}.
+\subsection{Une première sous-section}
+
+Les images \ref{img:Stella 2012} et \ref{img:Stella 2013} de \ref{img:Densité}  montrent l'évolution de la densité atmosphérique pour 
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.45\textwidth}
+\centering
+\includegraphics[width=0.9\linewidth]{images/densite/06_06_12.eps}
+\caption{2012}
+\label{img:Stella 2012}
+\end{subfigure}
+~
+\begin{subfigure}{0.45\textwidth}
+\centering
+\includegraphics[width=0.9\linewidth]{images/densite/06_06_13.eps}
+\caption{2013}
+\label{img:Stella 2013}
+\end{subfigure}
+\caption{Évolution de la densité atmosphérique}
+\label{img:Densité}
+\end{figure}
+
+\section{Une deuxième section}
+Le tableau \ref{tab:Ordre} montre l'effet du freinage atmosphérique sur la période de vie des satellites.
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+200 & 60 jours \\
+\hline
+250 & 220 jours \\
+\hline
+500 & quelques années \\
+\hline
+1000 & plusieurs siècles \\
+\hline
+1500 & 10000 ans\\
+\hline
+\end{tabular}
+\caption{Ordre de grandeur de la durée de vie moyenne d'un satellite en fonction de son altitude}
+\label{tab:Ordre}
+\end{table}
+\subsubsection{Une première sous sous-section}
+
+\chapter{Modèle de décroissance}
+\minitoc
+\section{Les satellites}
+
+Des modèles de décroissance sous forme polynomiale ont été établis. La figure \ref{img:décroissance} résume tout ceci.
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.45\textwidth}
+\centering
+\includegraphics[width=\linewidth]{images/modeles/modele_stella.eps}
+\caption{Stella}
+\label{img:Stella}
+\end{subfigure}
+~
+\begin{subfigure}{0.45\textwidth}
+\centering
+\includegraphics[width=\linewidth]{images/modeles/modele_starlette.eps}
+\caption{Starlette}
+\label{img:Starlette}
+\end{subfigure}
+
+\begin{subfigure}{0.45\textwidth}
+\centering
+\includegraphics[width=\linewidth]{images/modeles/modele_larets.eps}
+\caption{Larets}
+\label{img:Larets}
+\end{subfigure}
+~
+\begin{subfigure}{0.45\textwidth}
+\centering
+\includegraphics[width=\linewidth]{images/modeles/modele_westpack.eps}
+\caption{Westpack}
+\label{img:Westpack}
+\end{subfigure}
+\caption{Modèles de décroissance}
+\label{img:décroissance}
+\end{figure}
+
+Allez une belle équation bien sale avec une belle couleur
+{\color{ForestGreen} \large
+%\begin{eqnarray}
+\begin{empheq}[box=\fbox]{align}
+\dot{a}  = & \frac{2 \, a^2}{h} \, \left[e \, \sin v . a_r + \left(1+e \, \cos v \right). \, a_{\theta} \right] \\
+\dot{e}  = & \frac{h}{\mu} \, \left[\sin v . a_r + \left(\frac{e+\cos v}{1+e \, \cos v}\right).a_{\theta} \right] \\
+\dot{i} = & \frac{r \, \cos \left(v+\omega\right)}{h}. a_h\\
+\dot{\omega} = & \frac{h}{e \, \mu} \left[-\cos v.a_r+\frac{2+e\, \cos v}{1+e \, \cos v} \, \sin v.a_{\theta} \right] -\frac{r \, \sin\left(v+\omega\right) \, \cos i}{h \, \sin i}.a_h\\
+\dot{\Omega} = & n-\frac{h \, \sqrt{1-e^2}}{\mu} \, \left[\left(\frac{2}{1+e\, \cos v}-\frac{\cos v}{e}\right).a_r+\frac{\sin v}{e}\left(\frac{2+e\, \cos v}{1+e\, \cos v}\right).a_{\theta}\right]\\
+ = &  n-\sqrt{1-e^2}\, \left(\frac{2 \, r}{h}; a_r+\dot{\omega}+\dot{\Omega} \, \cos i \right) \nonumber
+\end{empheq}
+%\end{eqnarray}
+}
+\begin{appendices}
+\chapter{Codes sources}
+\inputminted[frame=lines,  %% Sépare le code par des lignes
+framesep=2mm,
+linenos]{cpp}{codes/test.cpp}
+\label{Annex:Un}
+\inputminted[frame=lines,framesep=2mm,linenos]{fortran}{codes/test.f90}
+\inputminted[frame=lines,framesep=2mm,linenos]{matlab}{codes/test.m}
+\end{appendices}
+
+\bibliography{biblio}
+
+\bibliographystyle{apalike}
+
+\end{document}
